@@ -1,6 +1,12 @@
-#include <windows_console.h>
+#include "../Header/Controleur.h"
 
-int main() {
 
+Controleur::Controleur(Univers & univers, Vue & vue)
+	:mUnivers{ univers }, mVue{vue}
+{
+	
+}
+
+void Controleur::start() {
 
 }
