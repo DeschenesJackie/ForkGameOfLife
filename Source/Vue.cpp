@@ -9,16 +9,28 @@ using namespace windows_console;
 
 const string NAME("Game of life");
 const string FONT_FAMILY("Consolas");
-const int PRECEDENT{ -1 }, COURANT{ 0 }, SUIVANT{ 1 };
 
-void formaterFenetre();
-void capterEvenement(); 
 
 Vue::Vue() {
-	formaterFenetre();
+	formatterFenetre();
 }
 
-void formaterFenetre() {
+int Vue::getMultiplier()
+{
+	return multiplier;
+}
+
+int Vue::getPercentage()
+{
+	return pourcentage;
+}
+
+int Vue::getFile()
+{
+	return fichier;
+}
+
+void Vue::formatterFenetre() {
 	csl << window::title(NAME)
 		<< window::fit(LARGEUR, HAUTEUR, FONT_FAMILY, 3, 1.0)
 		<< window::unresizable
@@ -30,11 +42,8 @@ void formaterFenetre() {
 	csl >> im;
 }
 
-void capterEvenement() {
+void Vue::capterEvenement() {
 	bool quit{};
-	int multiplier{0};
-	int pourcentage{0};
-	int fichier = COURANT;
 
 	while (!quit) {
 		console_events consoleEvents;
