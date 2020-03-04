@@ -6,9 +6,14 @@
 using namespace windows_console;
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-	_getch();
+	//OptionManager manager(argc, argv);
+	Univers univers;
+	Vue vue;
+
+	Controleur controleur(univers, vue);
+	controleur.start();
 	return 0;
 }
 
