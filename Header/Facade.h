@@ -3,23 +3,23 @@
 #define _Facade_h_
 #include "../Header/Cellule.h"
 #include <vector>
+#include "../Header/Regle.h"
 
 class Facade {
 
 private: 
-	//std::vector<Cellule> mVecteurActif;
+	std::vector<Cellule>& mVecteur;
+	std::vector<Cellule>::iterator mIterateur;
+	Regle mRegle;
+	bool mWrap;
 
-	//quand regle sera finie, definit constructeur et fonctions de facade
+public:
 
+	Facade(std::vector<Cellule>& vecteur, std::vector<Cellule>::iterator iterateurPosition, Regle regle, bool wrap = true);
+	~Facade() = default;
+
+	static bool applyRegle();
 };
-
-
-
-
-
-
-
-
 
 
 #endif
