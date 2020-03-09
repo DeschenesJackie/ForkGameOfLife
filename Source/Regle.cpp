@@ -21,7 +21,7 @@ std::vector<int> Regle::genRegleBorn(std::string mRegleEntree)
 		++iterateurString;
 	}
 
-	return std::vector<int>();
+	return vecteur;
 }
 
 std::vector<int> Regle::genRegleSurvive(std::string mRegleEntree)
@@ -37,7 +37,7 @@ std::vector<int> Regle::genRegleSurvive(std::string mRegleEntree)
 		if (*iterateurString != 'S' || *iterateurString != 's') vecteur.push_back((*iterateurString - '0'));
 	}
 
-	return std::vector<int>();
+	return vecteur;
 }
 
 
