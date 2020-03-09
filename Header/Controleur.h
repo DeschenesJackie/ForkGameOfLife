@@ -16,5 +16,4 @@ private:
 	Univers & mUnivers;
 	Vue & mVue;
 };
-
 #endif
