@@ -18,7 +18,7 @@ public:
 	Facade(std::vector<Cellule>& vecteur, std::vector<Cellule>::iterator iterateurPosition, Regle regle, bool wrap = true);
 	~Facade() = default;
 
-	static bool applyRegle();
+	bool applyRegle();
 };
 
 
