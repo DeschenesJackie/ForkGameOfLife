@@ -2,12 +2,12 @@
 #include <iostream>
 #include <conio.h>
 #include "../Header/Controleur.h"
+#include "../Header/RLE.h"
 using namespace windows_console;
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-
 	//OptionManager manager(argc, argv);
 	Univers univers;
 	Vue vue;
