@@ -19,12 +19,12 @@ void Univers::evolve()
 	switchVecteur();
 }
 
-std::vector<Cellule> Univers::getVecteurActif()
+std::vector<Cellule>& Univers::getVecteurActif()
 {
 	return *mVecteurActif;
 }
 
-std::vector<Cellule> Univers::getVecteurInactif()
+std::vector<Cellule>& Univers::getVecteurInactif()
 {
 	return *mVecteurInactif;
 }

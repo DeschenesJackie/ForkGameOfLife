@@ -11,8 +11,8 @@ public:
 	Univers();
 	~Univers() = default;
 	void evolve();
-	std::vector<Cellule> getVecteurActif();
-	std::vector<Cellule> getVecteurInactif();
+	std::vector<Cellule>& getVecteurActif();
+	std::vector<Cellule>& getVecteurInactif();
 
 private:
 	void switchVecteur();
