@@ -37,7 +37,7 @@ void Univers::switchVecteur()
 }
 
 // Usefullness TBD
-Cellule VecteurCellXY(int x, int y, std::vector<Cellule> static vecteur, int largeur, int hauteur, bool wrap)
+Cellule VecteurCellXY(int x, int y, std::vector<Cellule> const vecteur, int largeur, int hauteur, bool wrap)
 {
 	if (wrap) {
 		if (x < 0 || x > largeur) {

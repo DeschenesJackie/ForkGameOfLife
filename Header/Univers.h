@@ -2,6 +2,7 @@
 #ifndef _Univers_h_
 #define _Univers_h_
 #include "../Header/Cellule.h"
+#include "../Header/Constantes.h"
 #include <vector>
 
 class Univers
