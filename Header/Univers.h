@@ -3,6 +3,7 @@
 #define _Univers_h_
 #include "../Header/Cellule.h"
 #include "../Header/Constantes.h"
+#include "../Header/Regle.h"
 #include <vector>
 
 class Univers
@@ -20,6 +21,7 @@ private:
 	std::vector< Cellule> mVecteur2;
 	std::vector<Cellule> * mVecteurActif;
 	std::vector<Cellule> * mVecteurInactif;
+	Regle mRegle;
 };
 
 static Cellule VecteurCellXY(int x, int y, std::vector<Cellule> vecteur, int largeur = LARGEUR, int hauteur = HAUTEUR, bool wrap = true);

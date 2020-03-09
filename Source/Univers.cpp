@@ -1,8 +1,9 @@
 #include "..\Header\Univers.h"
+#include "..\Header\Facade.h"
 #include "..\Header\Constantes.h"
 
 Univers::Univers()
-	:mVecteur1(LARGEUR*HAUTEUR), mVecteur2(LARGEUR*HAUTEUR), mVecteurActif{&mVecteur1}, mVecteurInactif{&mVecteur2}
+	:mVecteur1(LARGEUR*HAUTEUR), mVecteur2(LARGEUR*HAUTEUR), mVecteurActif{&mVecteur1}, mVecteurInactif{&mVecteur2}, mRegle{Regle("b3/s23")}
 {
 
 }
@@ -12,7 +13,7 @@ void Univers::evolve()
 	std::vector<Cellule>::iterator iteratorActif = getVecteurActif().begin();
 	std::vector<Cellule>::iterator iteratorInactif = getVecteurInactif().begin();
 	while (iteratorActif != getVecteurActif().end()) {
-		(*iteratorInactif).setEtat(true); // a implementer remplacer le true par le fonction qui retourne la prochaine state de la cellule
+		(*iteratorInactif).setEtat(Facade(getVecteurActif(), iteratorActif, mRegle).applyRegle());
 		++iteratorActif;
 		++iteratorInactif;
 	}
