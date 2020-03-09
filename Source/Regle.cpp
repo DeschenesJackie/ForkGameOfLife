@@ -35,6 +35,7 @@ std::vector<int> Regle::genRegleSurvive(std::string mRegleEntree)
 	++iterateurString;
 	while (iterateurString != mRegleEntree.end()) {
 		if (*iterateurString != 'S' || *iterateurString != 's') vecteur.push_back((*iterateurString - '0'));
+		++iterateurString;
 	}
 
 	return vecteur;
