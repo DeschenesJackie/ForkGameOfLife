@@ -1,4 +1,4 @@
-#include "Regle.h"
+#include "..\Header\Regle.h"
 
 Regle::Regle(std::string regleEntree)
 : Regle(Regle::genRegleBorn(regleEntree), Regle::genRegleSurvive(regleEntree))
