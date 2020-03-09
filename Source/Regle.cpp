@@ -10,6 +10,16 @@ Regle::Regle(std::vector<int> regleBorn, std::vector<int> regleSurvive)
 {
 }
 
+std::vector<int> Regle::regleBorn() const
+{
+	return mRegleBorn;
+}
+
+std::vector<int> Regle::regleSurvive() const
+{
+	return mRegleSurvive;
+}
+
 //Rendu ici, définir les regles genRegleBorn et genRegleSurvive
 std::vector<int> Regle::genRegleBorn(std::string mRegleEntree)
 {
@@ -35,6 +45,7 @@ std::vector<int> Regle::genRegleSurvive(std::string mRegleEntree)
 	++iterateurString;
 	while (iterateurString != mRegleEntree.end()) {
 		if (*iterateurString != 'S' || *iterateurString != 's') vecteur.push_back((*iterateurString - '0'));
+		++iterateurString;
 	}
 
 	return vecteur;
