@@ -29,25 +29,24 @@ void RLE::findRCLFiles(std::string chemin)
 	}
 }
 
-void RLE::charManager(char c, Patron & p){
+	void RLE::charManager(char c, Patron & p) {
 	if (c >= 48 && c <= 57) {
 		mNbCell *= 10;
 		mNbCell += (int)c - '0';
 	}
 	else if (c == 'b' || c == 'o') {
-		bool etat{c == 'b' ? false : true }; // si char est b, cellule inactive, sinon active
+		bool etat{ c == 'b' ? false : true }; // si char est b, cellule inactive, sinon active
 
 		if (mNbCell == 0) { // si pas de nombre, 1 cellule pushed 
 			mNbCell = 1;
 		}
 
 		for (int i{}; i < mNbCell; ++i) {
-			p.contenu.push_back(Cellule(etat)); 
+			p.contenu.push_back(Cellule(etat));
 		}
-
-		mNbCell = 0;
 	}
 }
+
 
 Patron RLE::getPatron()
 {
