@@ -2,18 +2,18 @@
 #include "..\Header\Facade.h"
 #include "..\Header\Constantes.h"
 
-Univers::Univers()
-	:mVecteur1(LARGEUR*HAUTEUR), mVecteur2(LARGEUR*HAUTEUR), mVecteurActif{&mVecteur1}, mVecteurInactif{&mVecteur2}, mRegle(REGLE1)
+Univers::Univers(std::string regle)
+	:mVecteur1(LARGEUR*HAUTEUR), mVecteur2(LARGEUR*HAUTEUR), mVecteurActif{&mVecteur1}, mVecteurInactif{&mVecteur2}, mRegle(regle)
 {
 
 }
 
-void Univers::evolve()
+void Univers::evolve(bool wrap)
 {
 	std::vector<Cellule>::iterator iteratorActif = getVecteurActif().begin();
 	std::vector<Cellule>::iterator iteratorInactif = getVecteurInactif().begin();
 	while (iteratorActif != getVecteurActif().end()) {
-		(*iteratorInactif).setEtat(Facade(getVecteurActif(), iteratorActif, mRegle).applyRegle());
+		(*iteratorInactif).setEtat(Facade(getVecteurActif(), iteratorActif, mRegle, wrap).applyRegle()); //a changer pour la variable de la vue pour l'option de "wrap around"
 		++iteratorActif;
 		++iteratorInactif;
 	}
@@ -28,6 +28,11 @@ std::vector<Cellule>& Univers::getVecteurActif()
 std::vector<Cellule>& Univers::getVecteurInactif()
 {
 	return *mVecteurInactif;
+}
+
+void Univers::setRegle(std::string regle)
+{
+	mRegle = Regle(regle);
 }
 
 void Univers::switchVecteur()

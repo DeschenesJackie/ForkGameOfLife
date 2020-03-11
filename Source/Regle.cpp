@@ -82,8 +82,3 @@ std::vector<int> Regle::genRegleSurvive(std::string mRegleEntree)
 
 	return vecteur;
 }
-
-
-
-
-

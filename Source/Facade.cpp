@@ -17,6 +17,7 @@ bool Facade::applyRegle()
 	{
 		for (int j{ -1 }; j < 2; j++)
 		{
+			bool border{};
 			int x = i;
 			int y = j;
 			int distance = std::distance(mVecteur.begin(), mIterateur);
@@ -24,37 +25,47 @@ bool Facade::applyRegle()
 			switch (test)
 			{
 			case TOP_LEFT:
+				border = true;
 				if (x < 0) x = LARGEUR - 1;
 				if (y < 0) y = HAUTEUR-1;
 				break;
 			case TOP_RIGHT:
+				border = true;
 				if (y < 0) y = HAUTEUR-1;
 				if (x > 0) x = 0;
 				break;
 			case BOTTOM_LEFT:
+				border = true;
 				if (x < 0) x = LARGEUR - 1;
 				if (y > 0) y = 0;
 				break;
 			case BOTTOM_RIGHT:
+				border = true;
 				if (y > 0) y = 0;
 				if (x > 0) x = 0;
 				break;
 			case TOP:
+				border = true;
 				if (y < 0) y = HAUTEUR-1;
 				break;
 			case BOTTOM:
+				border = true;
 				if (y > 0) y = 0;
 				break;
 			case LEFT:
+				border = true;
 				if (x < 0) x = LARGEUR - 1;
 				break;
 			case RIGHT:
+				border = true;
 				if (x > 0) x = 0;
 				break;
 			}
 			if ((mIterateur + x + (y * LARGEUR) != mIterateur)) {
-				if ((*(mIterateur + x + (y * LARGEUR))).etat()) {
-					++compteurVivant;
+				if ((!mWrap && !border) || mWrap) {
+					if ((*(mIterateur + x + (y * LARGEUR))).etat()) { //a checker pour wrap around
+						++compteurVivant;
+					}
 				}
 			}
 		}

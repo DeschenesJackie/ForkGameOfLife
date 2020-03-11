@@ -9,7 +9,7 @@ Controleur::Controleur(Univers & univers, Vue & vue)
 
 void Controleur::start() {
 	while (!mVue.getMQuit()) { // A changer pour condition d'arret
-		mUnivers.evolve();
+		mUnivers.evolve(mVue.getEffetsBords());
 		mVue.capterEvenement();
 		mVue.affiche(mUnivers.getVecteurActif());
 	}

@@ -38,8 +38,18 @@ void Vue::pause() {
 
 void Vue::basculeModeCouleur()
 {
-	if (modeCouleur) { modeCouleur = false; }
-	else { modeCouleur = true; }
+	if (modeCouleur)
+	{
+		modeCouleur = false;
+	}
+	else
+	{
+		modeCouleur = true;
+	}
+}
+
+bool Vue::getEffetsBords() {
+	return effetsBords;
 }
 
 int Vue::getMultiplier()
@@ -150,6 +160,13 @@ bool Vue::getMQuit() {
 	return mQuit;
 }
 
+void Vue::gererEffetBords() {
+	if (effetsBords == true)
+		effetsBords = false;
+	else
+		effetsBords = true;
+}
+
 void Vue::capterEvenement() {
 	console_events consoleEvents;
 	consoleEvents.read_events();
@@ -171,7 +188,7 @@ void Vue::capterEvenement() {
 			case 'r':
 			case 'R':	nextRegle();			break;	// Basculer vers diff. règles (B3/S23, B36/S23, B3678/S34678, une règle de votre crue)
 			case 'b':
-			case 'B':	/* À faire */			break;	// Basculer entre 2 regles pour gestion des bords (bordures mortes, bordures cycliques)
+			case 'B':	gererEffetBords();		break;	// Basculer entre 2 regles pour gestion des bords (bordures mortes, bordures cycliques)
 			case 'p':
 			case 'P':	nextCouleur();			break;	// Bascule entre les différentes couleurs pour les cellules actives (blanc intense, rouge intense, vert intense, bleu intense, jaune intense, magenta intense, cyan intense)
 			case 'o':
