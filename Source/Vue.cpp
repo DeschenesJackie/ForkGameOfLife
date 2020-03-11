@@ -130,8 +130,8 @@ bool Vue::getSimStatus()
 	return simStatus;
 }
 
-void Vue::affiche(vector <Cellule> vecteurActif) {
-	std::vector<Cellule>::iterator iterateur = vecteurActif.begin();
+void Vue::affiche(vector <Cellule> const & vecteurActif) {
+	std::vector<Cellule>::const_iterator iterateur = vecteurActif.cbegin();
 	int x{}, y{};
 	
 	csl >> image;
@@ -139,7 +139,7 @@ void Vue::affiche(vector <Cellule> vecteurActif) {
 	
 	image << fill;
 
-	while (iterateur != vecteurActif.end()) {
+	while (iterateur != vecteurActif.cend()) {
 		if (x == LARGEUR) {
 			++y; x = 0;
 		}

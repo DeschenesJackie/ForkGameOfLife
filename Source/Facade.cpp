@@ -71,18 +71,11 @@ bool Facade::applyRegle()
 		}
 	}
 
-	std::vector<int> vecteurCourant;
-	if (mIterateur->etat()) {
-		vecteurCourant = mRegle.regleSurvive();
-	}
-	else
-	{
-		vecteurCourant = mRegle.regleBorn();
-	}
+	std::vector<int> const & vecteurCourant{ mIterateur->etat() ? mRegle.regleSurvive()  : mRegle.regleBorn() };
 
-	std::vector<int>::iterator regleCurrent = vecteurCourant.begin();
+	std::vector<int>::const_iterator regleCurrent = vecteurCourant.cbegin();
 
-	while (regleCurrent != vecteurCourant.end())
+	while (regleCurrent != vecteurCourant.cend())
 	{
 		if (*regleCurrent == compteurVivant) alive = true;
 		++regleCurrent;

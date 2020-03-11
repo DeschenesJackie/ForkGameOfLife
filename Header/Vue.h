@@ -44,7 +44,7 @@ class Vue
 
 		std::string getNomRegle();
 		void capterEvenement();
-		void affiche(std::vector <Cellule> vecteur);
+		void affiche(std::vector <Cellule> const & vecteur);
 
 };
 

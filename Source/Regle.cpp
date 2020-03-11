@@ -10,12 +10,12 @@ Regle::Regle(std::vector<int> regleBorn, std::vector<int> regleSurvive)
 {
 }
 
-std::vector<int> Regle::regleBorn() const
+std::vector<int> const & Regle::regleBorn() const
 {
 	return mRegleBorn;
 }
 
-std::vector<int> Regle::regleSurvive() const
+std::vector<int> const & Regle::regleSurvive() const
 {
 	return mRegleSurvive;
 }

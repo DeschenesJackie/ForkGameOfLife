@@ -15,8 +15,8 @@ public:
 
 	~Regle() = default;
 
-	std::vector<int> regleBorn() const;
-	std::vector<int> regleSurvive() const;
+	std::vector<int> const & regleBorn() const;
+	std::vector<int> const & regleSurvive() const;
 	static std::vector<int> genRegleBorn(std::string mRegleEntree);
 	static std::vector<int> genRegleSurvive(std::string mRegleEntree);
 	static bool confirmRegle(std::string mRegleEntree);
