@@ -5,15 +5,17 @@
 #include "../Header/Constantes.h"
 #include "../Header/Regle.h"
 #include <vector>
+#include <string>
 
 class Univers
 {
 public:
-	Univers();
+	Univers(std::string regle = "b3/s23");
 	~Univers() = default;
 	void evolve();
 	std::vector<Cellule>& getVecteurActif();
 	std::vector<Cellule>& getVecteurInactif();
+	void setRegle(std::string regle);
 
 private:
 	void switchVecteur();

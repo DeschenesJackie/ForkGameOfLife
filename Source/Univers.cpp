@@ -2,8 +2,8 @@
 #include "..\Header\Facade.h"
 #include "..\Header\Constantes.h"
 
-Univers::Univers()
-	:mVecteur1(LARGEUR*HAUTEUR), mVecteur2(LARGEUR*HAUTEUR), mVecteurActif{&mVecteur1}, mVecteurInactif{&mVecteur2}, mRegle("b3/s23")
+Univers::Univers(std::string regle)
+	:mVecteur1(LARGEUR*HAUTEUR), mVecteur2(LARGEUR*HAUTEUR), mVecteurActif{&mVecteur1}, mVecteurInactif{&mVecteur2}, mRegle(regle)
 {
 
 }
@@ -28,6 +28,11 @@ std::vector<Cellule>& Univers::getVecteurActif()
 std::vector<Cellule>& Univers::getVecteurInactif()
 {
 	return *mVecteurInactif;
+}
+
+void Univers::setRegle(std::string regle)
+{
+	mRegle = Regle(regle);
 }
 
 void Univers::switchVecteur()

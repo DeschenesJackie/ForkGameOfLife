@@ -51,7 +51,7 @@ std::vector<int> Regle::genRegleSurvive(std::string mRegleEntree)
 	return vecteur;
 }
 
-
-
-
-
+bool confirmRegle(std::string mRegleEntree)
+{
+	return false;
+}
