@@ -3,12 +3,13 @@
 #include <windows_console.h>
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 using namespace windows_console;
 
-const string NAME("Game of life");
-const string FONT_FAMILY("Consolas");
+const string NAME(NOMPROG);
+const string FONT_FAMILY(FONTFAMILY);
 
 void Vue::formatterFenetre() {
 	csl << window::title(NAME)
@@ -17,13 +18,15 @@ void Vue::formatterFenetre() {
 		<< window::unclosable
 		<< window::center
 		<< cursor::invisible;
-
-	image im;
-	csl >> im;
+	
+	csl >> image;
+	image << pen(dot, text_color(bright, white), background_color(bright, white));
+	csl << image;
 }
 
 Vue::Vue() {
 	formatterFenetre();
+
 }
 
 void Vue::pause() {
@@ -33,19 +36,71 @@ void Vue::pause() {
 	else { !simStatus; }
 }
 
+void Vue::basculeModeCouleur()
+{
+	if (modeCouleur) { modeCouleur = false; }
+	else { modeCouleur = true; }
+}
+
 int Vue::getMultiplier()
 {
 	return multiplier;
 }
 
-string getNomRegle(int compteurRegle) {
-	string nomRegle = "";
+void Vue::nextCouleur() {
+	++compteurCouleur;
+	if (compteurCouleur == 7) 
+	{
+		compteurCouleur = 0;
+	}	
+}
+
+void Vue::getCouleur() {
+	switch (compteurCouleur)
+	{
+	case 0: image << pen(dot, text_color(bright, white), background_color(bright, white));
+		image << brush(dot, text_color(dark, white), background_color(dark, white));
+		break;
+	case 1: image << pen(dot, text_color(bright, red), background_color(bright, red));
+		image << brush(dot, text_color(dark, red), background_color(dark, red));
+		break;
+	case 2: image << pen(dot, text_color(bright, green), background_color(bright, green));
+		image << brush(dot, text_color(dark, green), background_color(dark, green));
+		break;
+	case 3: image << pen(dot, text_color(bright, blue), background_color(bright, blue));
+		image << brush(dot, text_color(dark, blue), background_color(dark, blue));
+		break;
+	case 4:	image << pen(dot, text_color(bright, yellow), background_color(bright, yellow));
+		image << brush(dot, text_color(dark, yellow), background_color(dark, yellow));
+		break;
+	case 5: image << pen(dot, text_color(bright, magenta), background_color(bright, magenta));
+		image << brush(dot, text_color(dark, magenta), background_color(dark, magenta));
+		break;
+	case 6: image << pen(dot, text_color(bright, cyan), background_color(bright, cyan));
+		image << brush(dot, text_color(dark, cyan), background_color(dark, cyan));
+		break;
+	}
+	if (modeCouleur) {
+		image << brush(dot, text_color(dark, black), background_color(dark, black));
+	}
+}
+
+void Vue::nextRegle() {
+	++compteurRegle;
+	if (compteurRegle == 4)
+	{
+		compteurRegle = 0;
+	}
+}
+
+string Vue::getNomRegle() {
+		
 	switch (compteurRegle)
 	{
-	case 0: nomRegle = REGLE1;		break;
-	case 1: nomRegle = REGLE2;		break;
-	case 2: nomRegle = REGLE3;		break;
-	case 3: nomRegle = REGLE_CUSTOM; break;
+		case 0: nomRegle = REGLE1;			break;
+		case 1: nomRegle = REGLE2;			break;
+		case 2: nomRegle = REGLE3;			break;
+		case 3: nomRegle = REGLE_CUSTOM;	break;
 	}
 	return nomRegle;
 }
@@ -65,14 +120,42 @@ bool Vue::getSimStatus()
 	return simStatus;
 }
 
-void Vue::capterEvenement() {
-	bool quit{};
+void Vue::affiche(vector <Cellule> vecteurActif) {
+	std::vector<Cellule> vecteur = vecteurActif;
+	std::vector<Cellule>::iterator iterateur = vecteur.begin();
+	int x{}, y{};
+	
+	csl >> image;
+	getCouleur();
+	
+	image << fill;
 
-	while (!quit) {
-		console_events consoleEvents;
-		consoleEvents.read_events();
-		while (consoleEvents.key_events_count() > 0) {
-			switch (consoleEvents.next_key_event().ascii_value()) {
+	while (iterateur != vecteur.end()) {
+		if (x == LARGEUR) {
+			++y; x = 0;
+		}
+		if (iterateur->etat()) {
+			image << point(x, y);
+		}
+		; // retourne un bool a afficher (true pale false fonce)
+
+		++iterateur;
+		++x;
+	}
+	csl << image;
+
+}
+
+bool Vue::getMQuit() {
+	return mQuit;
+}
+
+void Vue::capterEvenement() {
+	console_events consoleEvents;
+	consoleEvents.read_events();
+	
+	if (consoleEvents.key_events_count() > 0) {
+		switch (consoleEvents.next_key_event().ascii_value()) {
 			case '32':	pause();			break;	// Espace : Pause/Reprise de la simulation
 
 			case '1':	multiplier = 1;		break;	// vitesse de la simulation
@@ -86,13 +169,13 @@ void Vue::capterEvenement() {
 			case '9':	multiplier = 9;		break;	// vitesse de la simulation
 
 			case 'r':
-			case 'R':	/* À faire */		break;	// Basculer vers diff. règles (B3/S23, B36/S23, B3678/S34678, une règle de votre crue)
+			case 'R':	nextRegle();			break;	// Basculer vers diff. règles (B3/S23, B36/S23, B3678/S34678, une règle de votre crue)
 			case 'b':
-			case 'B':	/* À faire */		break;	// Basculer entre 2 regles pour gestion des bords (bordures mortes, bordures cycliques)
+			case 'B':	/* À faire */			break;	// Basculer entre 2 regles pour gestion des bords (bordures mortes, bordures cycliques)
 			case 'p':
-			case 'P':	/* À faire */		break;	// Bascule entre les différentes couleurs pour les cellules actives (blanc intense, rouge intense, vert intense, bleu intense, jaune intense, magenta intense, cyan intense)
+			case 'P':	nextCouleur();			break;	// Bascule entre les différentes couleurs pour les cellules actives (blanc intense, rouge intense, vert intense, bleu intense, jaune intense, magenta intense, cyan intense)
 			case 'o':
-			case 'O':	/* À faire */		break;	// Bascule le mode de couleur pour les cellules inactives (noir, même couleur que les cellules actives mais foncées)
+			case 'O':	basculeModeCouleur();	break;	// Bascule le mode de couleur pour les cellules inactives (noir, même couleur que les cellules actives mais foncées)
 
 			case 'a':
 			case 'A':	pourcentage = 1;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
@@ -108,15 +191,14 @@ void Vue::capterEvenement() {
 			case 'H':	pourcentage = 50;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
 
 			case 'z':
-			case 'Z':	fichier = PRECEDENT;
+			case 'Z':	fichier = PRECEDENT;break;
 			case 'x':
-			case 'X':	fichier = COURANT;
+			case 'X':	fichier = COURANT;	break;
 			case 'c':
-			case 'C':	fichier = SUIVANT;
+			case 'C':	fichier = SUIVANT;	break;
 
 
-			case 27: quit = true; break;
-			}
+			case 27:	mQuit = true;		break;	// Escape
 		}
 	}
 }
