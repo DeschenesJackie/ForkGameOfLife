@@ -29,3 +29,4 @@ bool OptionManager::evaluationOption()
 
 	return valid;
 }
+

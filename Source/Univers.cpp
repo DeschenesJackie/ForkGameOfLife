@@ -2,10 +2,21 @@
 #include "..\Header\Facade.h"
 #include "..\Header\Constantes.h"
 
-Univers::Univers(std::string regle)
+Univers::Univers(Patron patron, std::string regle)
 	:mVecteur1(LARGEUR*HAUTEUR), mVecteur2(LARGEUR*HAUTEUR), mVecteurActif{&mVecteur1}, mVecteurInactif{&mVecteur2}, mRegle(regle)
 {
-
+	std::vector<Cellule>::iterator indexPatron = patron.contenu.begin();
+	std::vector<Cellule>::iterator iterateurActif = getVecteurActif().begin();
+	patron.contenu;
+	bool etat;
+	int departL = LARGEUR / 2 - patron.nbColonnes / 2;
+	int departH = HAUTEUR / 2 - patron.nbRangees / 2;
+	for (int i{}; i < patron.nbColonnes; ++i) {
+		for (int j{}; j < patron.nbRangees; ++j) {
+			etat = (*(indexPatron + i + (j*patron.nbColonnes))).etat();
+			(*(iterateurActif + i + departL + ((j + departH)*LARGEUR))).setEtat(etat);
+		}
+	}
 }
 
 void Univers::evolve()

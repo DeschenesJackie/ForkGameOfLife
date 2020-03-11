@@ -10,7 +10,7 @@
 class Univers
 {
 public:
-	Univers(std::string regle = "b3/s23");
+	Univers(Patron patron, std::string regle = "b3/s23");
 	~Univers() = default;
 	void evolve();
 	std::vector<Cellule>& getVecteurActif();
