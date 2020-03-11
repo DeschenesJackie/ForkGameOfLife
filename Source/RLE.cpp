@@ -29,7 +29,11 @@ void RLE::findRCLFiles(std::string chemin)
 }
 
 /*Cellule RLE::charToCell(char c){
+<<<<<<< HEAD
 
+=======
+	return
+>>>>>>> 3bf26e85f37073aa90a1c706e7c50b890f42ce76
 }*/
 
 Patron RLE::getPatron()
