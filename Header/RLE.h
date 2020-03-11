@@ -16,7 +16,7 @@
 
 // RLE rle("Y:\\HIVER_2020\\projet_oracle\\B62_TP1\\Doc\\FichiersRLE\\fichiers_rle");
 // rle.getPatron(); 
-// to put in main to test
+// to put in main 
 
 
 #pragma once
@@ -49,8 +49,9 @@ private:
 	std::list<std::string> mFiles; 
 	int mNbPatrons; 
 	std::list<std::string>::iterator mIterateur;
+	int mNbCell; 
 
-	Cellule charToCell(char c); 
+	void charManager(char c, Patron & p);
 	void findRCLFiles(std::string chemin);  	  // Singleton pour initialiser variable files
 	void previousPatron();
 	void nextPatron();

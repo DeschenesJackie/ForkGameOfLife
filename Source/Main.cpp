@@ -2,7 +2,6 @@
 #include <iostream>
 #include <conio.h>
 #include "../Header/Controleur.h"
-#include "../Header/RLE.h"
 #include "../Header/OptionManager.h"
 using namespace windows_console;
 using namespace std;

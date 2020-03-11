@@ -6,6 +6,7 @@ RLE::RLE(std::string chemin)
 	findRCLFiles(chemin);
 	mIterateur = mFiles.begin();
 	mNbPatrons = mFiles.size();
+	mNbCell = 0; 
 }
 
 void RLE::findRCLFiles(std::string chemin)
@@ -28,17 +29,32 @@ void RLE::findRCLFiles(std::string chemin)
 	}
 }
 
-/*
-Cellule RLE::charToCell(char c){
+	void RLE::charManager(char c, Patron & p) {
+	if (c >= 48 && c <= 57) {
+		mNbCell *= 10;
+		mNbCell += (int)c - '0';
+	}
+	else if (c == 'b' || c == 'o') {
+		bool etat{ c == 'b' ? false : true }; // si char est b, cellule inactive, sinon active
 
+		if (mNbCell == 0) { // si pas de nombre, 1 cellule pushed 
+			mNbCell = 1;
+		}
+
+		for (int i{}; i < mNbCell; ++i) {
+			p.contenu.push_back(Cellule(etat));
+		}
+	}
 }
-*/
 
 
 Patron RLE::getPatron()
 {
 	std::ifstream iStream(*mIterateur, std::ios::in);
-	std::regex commentaire("^#.+"); 
+	std::regex commentaire("^#.+"); //  # ...
+	std::regex limitations("x\\s=\\s(\\d+),\\sy\\s=\\s(\\d+).*"); // x = [0-9]+, y = [0-9]+
+	bool limitationDone{ false }; 
+	std::smatch capture; 
 	Patron patron; 
 
 	if (iStream.is_open()) {
@@ -47,9 +63,19 @@ Patron RLE::getPatron()
 			std::getline(iStream, ligne);
 	
 			if (!std::regex_match(ligne, commentaire)) { 
-				//std::for_each(ligne.begin(), ligne.end(), [&patron](char c) { patron.contenu.push_back(charToCell(c))});
-			}
+				if(limitationDone)
+					std::for_each(ligne.begin(), ligne.end(), [&patron, this](char c) { charManager(c, patron); });
+				else {
+					if (std::regex_match(ligne, capture, limitations)) {
+						if (capture.size() == 3) {
+							patron.nbRangees = std::stoi(capture[1].str());
+							patron.nbColonnes = std::stoi(capture[2].str());
 
+							limitationDone = true; 
+						}  
+					}
+				}
+			}
 		}
 	}
 
