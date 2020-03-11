@@ -10,26 +10,6 @@ using namespace windows_console;
 const string NAME("Game of life");
 const string FONT_FAMILY("Consolas");
 
-
-Vue::Vue() {
-	formatterFenetre();
-}
-
-int Vue::getMultiplier()
-{
-	return multiplier;
-}
-
-int Vue::getPercentage()
-{
-	return pourcentage;
-}
-
-int Vue::getFile()
-{
-	return fichier;
-}
-
 void Vue::formatterFenetre() {
 	csl << window::title(NAME)
 		<< window::fit(LARGEUR, HAUTEUR, FONT_FAMILY, 3, 1.0)
@@ -42,6 +22,49 @@ void Vue::formatterFenetre() {
 	csl >> im;
 }
 
+Vue::Vue() {
+	formatterFenetre();
+}
+
+void Vue::pause() {
+	if (!simStatus) {
+		simStatus;
+	}
+	else { !simStatus; }
+}
+
+int Vue::getMultiplier()
+{
+	return multiplier;
+}
+
+string getNomRegle(int compteurRegle) {
+	string nomRegle = "";
+	switch (compteurRegle)
+	{
+	case 0: nomRegle = REGLE1;		break;
+	case 1: nomRegle = REGLE2;		break;
+	case 2: nomRegle = REGLE3;		break;
+	case 3: nomRegle = REGLE_CUSTOM; break;
+	}
+	return nomRegle;
+}
+
+int Vue::getPercentage()
+{
+	return pourcentage;
+}
+
+int Vue::getFile()
+{
+	return fichier;
+}
+
+bool Vue::getSimStatus()
+{
+	return simStatus;
+}
+
 void Vue::capterEvenement() {
 	bool quit{};
 
@@ -50,7 +73,7 @@ void Vue::capterEvenement() {
 		consoleEvents.read_events();
 		while (consoleEvents.key_events_count() > 0) {
 			switch (consoleEvents.next_key_event().ascii_value()) {
-			case '32':	/* À faire */		break;	// Espace : Pause/Reprise de la simulation
+			case '32':	pause();			break;	// Espace : Pause/Reprise de la simulation
 
 			case '1':	multiplier = 1;		break;	// vitesse de la simulation
 			case '2': 	multiplier = 2;		break;	// vitesse de la simulation
