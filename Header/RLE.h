@@ -16,7 +16,7 @@
 
 // RLE rle("Y:\\HIVER_2020\\projet_oracle\\B62_TP1\\Doc\\FichiersRLE\\fichiers_rle");
 // rle.getPatron(); 
-// to put in main to test
+// to put in main 
 
 
 #pragma once
