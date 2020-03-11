@@ -13,7 +13,7 @@ class Vue
 		bool simStatus = true;
 		int fichier{};
 		int compteurRegle{};
-		int effetsBords{};	// 0 ou 1 : 0 = bordure morte, 1 = bordure vivante
+		bool effetsBords = true;	// 0 ou 1 : 0 = bordure morte, 1 = bordure vivante
 
 		void formatterFenetre();
 		void capterEvenement();
@@ -27,6 +27,7 @@ class Vue
 		int getPercentage();
 		int getFile();
 		bool getSimStatus();
+		bool getEffetsBords();
 		std::string getNomRegle();
 
 };
