@@ -6,6 +6,8 @@
 #include "..\Header\Cellule.h"
 #include <string>
 
+const std::string NOMPROG = "Game of life", FONTFAMILY = "consolas";
+
 const int LARGEUR{ 300 }, HAUTEUR{ 200 };
 
 const int PRECEDENT{ -1 }, COURANT{ 0 }, SUIVANT{ 1 };

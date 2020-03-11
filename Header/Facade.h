@@ -17,7 +17,7 @@ private:
 
 public:
 
-	Facade(std::vector<Cellule>& vecteur, std::vector<Cellule>::iterator iterateurPosition, Regle regle, bool wrap = true);
+	Facade(std::vector<Cellule>& vecteur, std::vector<Cellule>::iterator iterateurPosition, Regle regle, bool wrap);
 	~Facade() = default;
 
 	bool applyRegle();
