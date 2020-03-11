@@ -7,14 +7,14 @@ Univers::Univers(Patron patron, std::string regle)
 {
 	std::vector<Cellule>::iterator indexPatron = patron.contenu.begin();
 	std::vector<Cellule>::iterator iterateurActif = getVecteurActif().begin();
-	patron.contenu;
+
 	bool etat;
 	int departL = LARGEUR / 2 - patron.nbColonnes / 2;
 	int departH = HAUTEUR / 2 - patron.nbRangees / 2;
 	for (int i{}; i < patron.nbColonnes; ++i) {
 		for (int j{}; j < patron.nbRangees; ++j) {
-			etat = (*(indexPatron + i + (j*patron.nbColonnes))).etat();
-			(*(iterateurActif + i + departL + ((j + departH)*LARGEUR))).setEtat(etat);
+			etat = (*(indexPatron + j + (i*patron.nbColonnes))).etat();
+			(*(iterateurActif + j + ((i)*LARGEUR))).setEtat(etat);
 		}
 	}
 }
