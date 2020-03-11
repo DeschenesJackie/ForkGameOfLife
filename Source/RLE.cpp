@@ -29,7 +29,7 @@ void RLE::findRCLFiles(std::string chemin)
 	}
 }
 
-	void RLE::charManager(char c, Patron & p) {
+void RLE::charManager(char c, Patron & p) {
 	if (c >= 48 && c <= 57) {
 		mNbCell *= 10;
 		mNbCell += (int)c - '0';
@@ -44,6 +44,8 @@ void RLE::findRCLFiles(std::string chemin)
 		for (int i{}; i < mNbCell; ++i) {
 			p.contenu.push_back(Cellule(etat));
 		}
+
+		mNbCell = 0; 
 	}
 }
 
