@@ -49,8 +49,9 @@ private:
 	std::list<std::string> mFiles; 
 	int mNbPatrons; 
 	std::list<std::string>::iterator mIterateur;
+	int mNbCell; 
 
-	Cellule charToCell(char c); 
+	void charManager(char c, Patron & p);
 	void findRCLFiles(std::string chemin);  	  // Singleton pour initialiser variable files
 	void previousPatron();
 	void nextPatron();

@@ -8,6 +8,9 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+
+	RLE rle("Y:\\HIVER_2020\\projet_oracle\\B62_TP1\\Doc\\FichiersRLE\\fichiers_rle");
+	rle.getPatron(); 
 	//OptionManager manager(argc, argv);
 	Univers univers;
 	Vue vue;
