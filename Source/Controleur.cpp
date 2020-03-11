@@ -8,9 +8,9 @@ Controleur::Controleur(Univers & univers, Vue & vue)
 }
 
 void Controleur::start() {
-	while (true) { // A changer pour condition d'arret
-		mUnivers.evolve();
-		// Fonction d'affichage du VecteurActif de la vue 
-		// appelle pour avoir access au vecteur Actif est mUnivers.getVecteurActif()
+	while (!mVue.getMQuit()) { // A changer pour condition d'arret
+		mUnivers.evolve(mVue.getEffetsBords());
+		mVue.capterEvenement();
+		mVue.affiche(mUnivers.getVecteurActif());
 	}
 }

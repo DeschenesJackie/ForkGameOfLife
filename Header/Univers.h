@@ -12,7 +12,7 @@ class Univers
 public:
 	Univers(Patron patron, std::string regle = "b3/s23");
 	~Univers() = default;
-	void evolve();
+	void evolve(bool wrap);
 	std::vector<Cellule>& getVecteurActif();
 	std::vector<Cellule>& getVecteurInactif();
 	void setRegle(std::string regle);

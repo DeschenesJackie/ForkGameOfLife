@@ -19,12 +19,12 @@ Univers::Univers(Patron patron, std::string regle)
 	}
 }
 
-void Univers::evolve()
+void Univers::evolve(bool wrap)
 {
 	std::vector<Cellule>::iterator iteratorActif = getVecteurActif().begin();
 	std::vector<Cellule>::iterator iteratorInactif = getVecteurInactif().begin();
 	while (iteratorActif != getVecteurActif().end()) {
-		(*iteratorInactif).setEtat(Facade(getVecteurActif(), iteratorActif, mRegle).applyRegle());
+		(*iteratorInactif).setEtat(Facade(getVecteurActif(), iteratorActif, mRegle, wrap).applyRegle()); //a changer pour la variable de la vue pour l'option de "wrap around"
 		++iteratorActif;
 		++iteratorInactif;
 	}
