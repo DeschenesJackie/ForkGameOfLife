@@ -11,13 +11,13 @@ class Facade {
 private: 
 	std::vector<Cellule>& mVecteur;
 	std::vector<Cellule>::iterator mIterateur;
-	Regle mRegle;
-	bool mWrap;
+	Regle& mRegle;
+	bool& mWrap;
 	borders evalBorder(int distance);
 
 public:
 
-	Facade(std::vector<Cellule>& vecteur, std::vector<Cellule>::iterator iterateurPosition, Regle regle, bool wrap);
+	Facade(std::vector<Cellule>& vecteur, std::vector<Cellule>::iterator iterateurPosition, Regle& regle, bool& wrap);
 	~Facade() = default;
 
 	bool applyRegle();
