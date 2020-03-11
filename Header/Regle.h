@@ -19,5 +19,5 @@ public:
 	std::vector<int> regleSurvive() const;
 	static std::vector<int> genRegleBorn(std::string mRegleEntree);
 	static std::vector<int> genRegleSurvive(std::string mRegleEntree);
+	static bool confirmRegle(std::string mRegleEntree);
 };
-static bool confirmRegle(std::string mRegleEntree);

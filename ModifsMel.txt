@@ -1,4 +1,4 @@
------------Vue.h-------------
+﻿-----------Vue.h-------------
 
 #pragma once
 #include "../Header/Constantes.h"
@@ -158,21 +158,3 @@ void Vue::capterEvenement() {
 		}
 	}
 }
-
------------Constantes.h-------------
-
-
-#pragma once
-#ifndef _Constantes_h_
-#define _Constantes_h_
-
-const int LARGEUR = 300, HAUTEUR = 200; 
-
-const int PRECEDENT{ -1 }, COURANT{ 0 }, SUIVANT{ 1 };
-
-const bool ALIVE{1}, DEAD{0}; 
-
-const string REGLE1{"B3/S23"}, REGLE2{"B36/S23"}, REGLE3{"B3678/S34678"}, REGLE_CUSTOM{"custom"};
-
-
-#endif

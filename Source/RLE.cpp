@@ -27,11 +27,13 @@ void RLE::findRCLFiles(std::string chemin)
 		}
 	}
 }
+
 /*
 Cellule RLE::charToCell(char c){
 
 }
 */
+
 
 Patron RLE::getPatron()
 {
