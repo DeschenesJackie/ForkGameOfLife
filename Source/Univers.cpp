@@ -19,6 +19,29 @@ Univers::Univers(Patron patron, std::string regle)
 	}
 }
 
+void Univers::reset(Patron patron, std::string regle) { 
+	std::vector<Cellule>::iterator iterateurActif = getVecteurActif().begin();
+	
+	setRegle(regle);
+
+	while (iterateurActif != getVecteurActif().end()) {
+		(*iterateurActif).setEtat(false); 
+		++iterateurActif; 
+	}          
+	std::vector<Cellule>::iterator indexPatron = patron.contenu.begin();
+	iterateurActif = getVecteurActif().begin();
+	
+	bool etat;
+	int departL = LARGEUR / 2 - patron.nbColonnes / 2;
+	int departH = HAUTEUR / 2 - patron.nbRangees / 2;
+	for (int i{}; i < patron.nbColonnes; ++i) {
+		for (int j{}; j < patron.nbRangees; ++j) {
+			etat = (*(indexPatron + j + (i*patron.nbColonnes))).etat(); 
+			(*(iterateurActif + j + ((i)*LARGEUR))).setEtat(etat); 
+		}
+	}
+}
+
 void Univers::evolve(bool wrap)
 {
 	std::vector<Cellule>::iterator iteratorActif = getVecteurActif().begin();

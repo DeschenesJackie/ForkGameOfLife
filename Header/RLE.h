@@ -44,6 +44,8 @@ public:
 	RLE(std::string chemin);						// Initialiser avec un chemin absolu! 
 	~RLE() = default; 
 	Patron getPatron();   
+	void previousPatron();
+	void nextPatron();
 
 
 private: 
@@ -54,8 +56,6 @@ private:
 
 	void charManager(char c, Patron & p);
 	void findRCLFiles(std::string chemin);  	  // Singleton pour initialiser variable files
-	void previousPatron();
-	void nextPatron();
 };
 
 #endif

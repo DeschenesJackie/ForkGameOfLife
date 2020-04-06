@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <windows_console.h>
+#include "../Header/RLE.h"
 
 class Vue
 {
@@ -15,13 +16,13 @@ class Vue
 		int pourcentage{};
 		bool simStatus{};	//	init a 1 qd demarre
 		bool mQuit{};
-		int fichier{};
 		int compteurRegle{};
 		int compteurCouleur{};
 		bool effetsBords = true;	// 0 ou 1 : 0 = bordure morte, 1 = bordure vivante
 		windows_console::image image;
 		bool modeCouleur{};
 		std::string nomRegle = "";
+		std::string mCustomRegle = "";
 
 		void formatterFenetre();
 		void pause();
@@ -32,19 +33,20 @@ class Vue
 		void gererEffetBords();
 
 	public:
-		Vue();
+		Vue(RLE rle);
 		~Vue() = default;
 
 		int getMultiplier();
 		int getPercentage();
-		int getFile();
 		bool getSimStatus();
 		bool getMQuit();
 		bool getEffetsBords();
+		RLE mRLE;
 
 		std::string getNomRegle();
-		void capterEvenement();
+		bool capterEvenement();
 		void affiche(std::vector <Cellule> const & vecteur);
+		void setCustomRegle(std::string s);
 
 };
 

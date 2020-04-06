@@ -11,6 +11,8 @@ using namespace windows_console;
 const string NAME(NOMPROG);
 const string FONT_FAMILY(FONTFAMILY);
 
+
+
 void Vue::formatterFenetre() {
 	csl << window::title(NAME)
 		<< window::fit(LARGEUR, HAUTEUR, FONT_FAMILY, 3, 1.0)
@@ -24,7 +26,9 @@ void Vue::formatterFenetre() {
 	csl << image;
 }
 
-Vue::Vue() {
+Vue::Vue(RLE rle)
+:mRLE{rle}
+{
 	formatterFenetre();
 
 }
@@ -63,6 +67,10 @@ void Vue::nextCouleur() {
 	{
 		compteurCouleur = 0;
 	}	
+}
+
+void Vue::setCustomRegle(std::string s) {
+	mCustomRegle = s;
 }
 
 void Vue::getCouleur() {
@@ -110,7 +118,14 @@ string Vue::getNomRegle() {
 		case 0: nomRegle = REGLE1;			break;
 		case 1: nomRegle = REGLE2;			break;
 		case 2: nomRegle = REGLE3;			break;
-		case 3: nomRegle = REGLE_CUSTOM;	break;
+		case 3: 
+			if (mCustomRegle != "")
+				nomRegle = mCustomRegle;
+			else {
+				nextRegle();
+				getNomRegle();
+			}
+			break;
 	}
 	return nomRegle;
 }
@@ -120,10 +135,6 @@ int Vue::getPercentage()
 	return pourcentage;
 }
 
-int Vue::getFile()
-{
-	return fichier;
-}
 
 bool Vue::getSimStatus()
 {
@@ -166,9 +177,10 @@ void Vue::gererEffetBords() {
 		effetsBords = true;
 }
 
-void Vue::capterEvenement() {
+bool Vue::capterEvenement() {
 	console_events consoleEvents;
 	consoleEvents.read_events();
+	bool recompile = false;
 	
 	if (consoleEvents.key_events_count() > 0) {
 		switch (consoleEvents.next_key_event().ascii_value()) {
@@ -185,7 +197,7 @@ void Vue::capterEvenement() {
 			case '9':	multiplier = 9;		break;	// vitesse de la simulation
 
 			case 'r':
-			case 'R':	nextRegle();			break;	// Basculer vers diff. règles (B3/S23, B36/S23, B3678/S34678, une règle de votre crue)
+			case 'R':	nextRegle(); recompile = true;		break;	// Basculer vers diff. règles (B3/S23, B36/S23, B3678/S34678, une règle de votre crue)
 			case 'b':
 			case 'B':	gererEffetBords();		break;	// Basculer entre 2 regles pour gestion des bords (bordures mortes, bordures cycliques)
 			case 'p':
@@ -207,14 +219,15 @@ void Vue::capterEvenement() {
 			case 'H':	pourcentage = 50;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
 
 			case 'z':
-			case 'Z':	fichier = PRECEDENT;break;
+			case 'Z':	mRLE.previousPatron(); recompile = true;  break;
 			case 'x':
-			case 'X':	fichier = COURANT;	break;
+			case 'X':	recompile = true;	break;
 			case 'c':
-			case 'C':	fichier = SUIVANT;	break;
+			case 'C':	mRLE.nextPatron(); recompile = true;	break;
 
 
 			case 27:	mQuit = true;		break;	// Escape
 		}
 	}
+	return recompile;
 }
