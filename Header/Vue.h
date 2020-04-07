@@ -12,9 +12,9 @@
 class Vue
 {
 	private:
-		int multiplier{};
+		int multiplier{1};
 		int pourcentage{};
-		bool simStatus{};	//	init a 1 qd demarre
+		bool simStatus{true};	//	init a 1 qd demarre
 		bool mQuit{};
 		int compteurRegle{};
 		int compteurCouleur{};

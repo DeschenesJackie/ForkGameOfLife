@@ -181,6 +181,7 @@ bool Vue::capterEvenement() {
 	console_events consoleEvents;
 	consoleEvents.read_events();
 	bool recompile = false;
+
 	
 	if (consoleEvents.key_events_count() > 0) {
 		switch (consoleEvents.next_key_event().ascii_value()) {

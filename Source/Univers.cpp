@@ -14,7 +14,7 @@ Univers::Univers(Patron patron, std::string regle)
 	for (int i{}; i < patron.nbColonnes; ++i) {
 		for (int j{}; j < patron.nbRangees; ++j) {
 			etat = (*(indexPatron + j + (i*patron.nbColonnes))).etat();
-			(*(iterateurActif + j + ((i)*LARGEUR))).setEtat(etat);
+			(*(iterateurActif + j + departL + ((i + departH)* (LARGEUR)))).setEtat(etat);
 		}
 	}
 }
@@ -37,7 +37,7 @@ void Univers::reset(Patron patron, std::string regle) {
 	for (int i{}; i < patron.nbColonnes; ++i) {
 		for (int j{}; j < patron.nbRangees; ++j) {
 			etat = (*(indexPatron + j + (i*patron.nbColonnes))).etat(); 
-			(*(iterateurActif + j + ((i)*LARGEUR))).setEtat(etat); 
+			(*(iterateurActif + j + departL + ((i + departH)* (LARGEUR)))).setEtat(etat);
 		}
 	}
 }
