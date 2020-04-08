@@ -34,10 +34,10 @@ Vue::Vue(RLE rle)
 }
 
 void Vue::pause() {
-	if (!simStatus) {
-		simStatus;
+	if (simStatus) {
+		simStatus=false;
 	}
-	else { !simStatus; }
+	else { simStatus=true; }
 }
 
 void Vue::basculeModeCouleur()
