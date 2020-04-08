@@ -4,8 +4,7 @@ RLE::RLE(std::string chemin)
 {
 	mNbPatrons = 0;
 	findRCLFiles(chemin);
-	mIterateur = mFiles.begin();
-	mNbPatrons = mFiles.size();
+	
 	mNbCell = 0; 
 }
 
@@ -26,6 +25,8 @@ void RLE::findRCLFiles(std::string chemin)
 				mFiles.push_back(cheminActuel);
 			}
 		}
+		mIterateur = mFiles.begin();
+		mNbPatrons = mFiles.size();
 	}
 }
 

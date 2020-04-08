@@ -11,8 +11,8 @@ void Controleur::start() {
 		if (mVue.capterEvenement()) {
 			mUnivers.reset(mVue.mRLE.getPatron(), mVue.getNomRegle());
 		}
-		if (mVue.getSimStatus()) {
-			for (int i{}; i < mVue.getMultiplier(); ++i) {
+		if (mVue.getSimStatus()) {			
+			for (i{}; i < mVue.getMultiplier(); ++i){
 				mUnivers.evolve(mVue.getEffetsBords());
 			}
 			mVue.affiche(mUnivers.getVecteurActif());

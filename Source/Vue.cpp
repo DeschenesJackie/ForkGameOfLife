@@ -26,7 +26,7 @@ void Vue::formatterFenetre() {
 	csl << image;
 }
 
-Vue::Vue(RLE rle)
+Vue::Vue(RLE &rle)
 :mRLE{rle}
 {
 	formatterFenetre();
@@ -34,10 +34,10 @@ Vue::Vue(RLE rle)
 }
 
 void Vue::pause() {
-	if (!simStatus) {
-		simStatus;
+	if (simStatus) {
+		simStatus=false;
 	}
-	else { !simStatus; }
+	else { simStatus=true; }
 }
 
 void Vue::basculeModeCouleur()
@@ -183,7 +183,7 @@ bool Vue::capterEvenement() {
 	bool recompile = false;
 
 	
-
+	csl << key_events::add_filter<key_filter_up>;
 	if (consoleEvents.key_events_count() > 0) {
 		switch (consoleEvents.next_key_event().ascii_value()) {
 			case '32':	pause();			break;	// Espace : Pause/Reprise de la simulation
