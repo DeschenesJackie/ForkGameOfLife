@@ -49,7 +49,7 @@ public:
 
 
 private: 
-	std::list<std::string> mFiles; 
+	std::vector<std::string> mFiles; 
 	int mNbPatrons; 
 	std::vector<std::string>::iterator mIterateur;
 	int mNbCell; 
