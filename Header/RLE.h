@@ -51,7 +51,8 @@ private:
 	std::vector<std::string> mFiles; 
 	int mNbPatrons; 
 	std::vector<std::string>::iterator mIterateur;
-	int mNbCell; 
+	int mNbCell;
+	int mSizeLine;
 
 	void charManager(char c, Patron & p);
 	void findRCLFiles(std::string chemin);  	  // Singleton pour initialiser variable files

@@ -5,7 +5,8 @@ RLE::RLE(std::string chemin)
 	mNbPatrons = 0;
 	findRCLFiles(chemin);
 	
-	mNbCell = 0; 
+	mNbCell = 0;
+	mSizeLine = 0;
 }
 
 void RLE::findRCLFiles(std::string chemin)
