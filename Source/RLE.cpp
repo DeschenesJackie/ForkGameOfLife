@@ -4,7 +4,7 @@ RLE::RLE(std::string chemin)
 {
 	mNbPatrons = 0;
 	findRCLFiles(chemin);
-	
+	generatePatron();
 	mNbCell = 0;
 	mSizeLine = 0;
 }
@@ -61,8 +61,7 @@ void RLE::charManager(char c, Patron & p) {
 	}
 }
 
-
-Patron RLE::getPatron()
+Bool RLE::generatePatron()
 {
 	std::ifstream iStream(*mIterateur, std::ios::in);
 	std::regex commentaire("^#.+"); //  # ...
@@ -92,8 +91,16 @@ Patron RLE::getPatron()
 			}
 		}
 	}
+	
+	mPatron = patron;
+	
+	if (mPatron.nbColonnes*mPatron.nbRangees == mPatron.contenu.size()) {return true;} else {return false;}
+}
 
-	return patron;
+
+Patron RLE::getPatron()
+{
+	return mPatron;
 }
 
 void RLE::previousPatron()

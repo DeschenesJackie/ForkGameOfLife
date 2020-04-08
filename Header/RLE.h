@@ -42,7 +42,8 @@ class RLE {
 public: 
 	RLE(std::string chemin);						// Initialiser avec un chemin absolu! 
 	~RLE() = default; 
-	Patron getPatron();   
+	Patron getPatron();
+	bool generatePatron();
 	void previousPatron();
 	void nextPatron();
 
@@ -51,6 +52,7 @@ private:
 	std::vector<std::string> mFiles; 
 	int mNbPatrons; 
 	std::vector<std::string>::iterator mIterateur;
+	Patron mPatron;
 	int mNbCell;
 	int mSizeLine;
 
