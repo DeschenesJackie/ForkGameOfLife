@@ -49,7 +49,7 @@ void RLE::charManager(char c, Patron & p) {
 		}
 		mNbCell = 0; 
 	}
-	else if (c == '$') {
+	else if (c == '$' || c == '!') {
 
 		if (mNbCell > 0) { --mNbCell; }
 
