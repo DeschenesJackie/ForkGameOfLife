@@ -53,7 +53,7 @@ void RLE::charManager(char c, Patron & p) {
 
 		if (mNbCell > 0) { --mNbCell; }
 
-		for (int i{}; i < (p.nbColonnes - mSizeLine) + p.nbColonnes * (mNbCell); ++i) {
+		for (int i{}; i < (p.nbRangees - mSizeLine) + p.nbRangees * (mNbCell); ++i) {
 			p.contenu.push_back(Cellule(false));
 		}
 		mNbCell = 0;
