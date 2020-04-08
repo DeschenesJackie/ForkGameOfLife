@@ -45,16 +45,17 @@ void RLE::charManager(char c, Patron & p) {
 		for (int i{}; i < mNbCell; ++i) {
 			p.contenu.push_back(Cellule(etat));
 		}
-		for (int i{}; i < mNbCell; ++i) {
-			p.contenu.push_back(Cellule(etat));
-		}
 		mNbCell = 0; 
 	}
 	else if (c == '$') {
-		for (int i{}; i < p.nbColonnes * mNbCell; ++i) {
+		int lineSize = p.contenu.size() % p.nbColonnes;
+
+		if (mNbCell > 0) { --mNbCell; }
+
+		for (int i{}; i < (lineSize - p.nbColonnes) + p.nbColonnes * (mNbCell); ++i) {
 			p.contenu.push_back(Cellule(false));
 		}
-		mNbCell = 0; 
+		mNbCell = 0;
 	}
 }
 
