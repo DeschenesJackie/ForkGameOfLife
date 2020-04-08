@@ -88,15 +88,13 @@ void RLE::previousPatron()
 {
 	if (mIterateur == mFiles.begin())
 		mIterateur = mFiles.end();
-	else
-		std::advance(mIterateur, -1); 
+	std::advance(mIterateur, -1);
 }
 
 void RLE::nextPatron()
-{	
+{
+	std::advance(mIterateur, 1);
 	if (mIterateur == mFiles.end())
 		mIterateur = mFiles.begin();
-	else
-		std::advance(mIterateur, 1);
 }
 

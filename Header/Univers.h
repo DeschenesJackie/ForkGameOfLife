@@ -16,6 +16,7 @@ public:
 	std::vector<Cellule>& getVecteurActif();
 	std::vector<Cellule>& getVecteurInactif();
 	void setRegle(std::string regle);
+	void reset(Patron patron, std::string regle);
 
 private:
 	void switchVecteur();

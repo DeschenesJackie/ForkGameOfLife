@@ -11,15 +11,18 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	OptionManager manager(argc, argv);
-	RLE rle("Y:\\HIVER_2020\\projet_oracle\\B62_TP1\\Doc\\FichiersRLE\\fichiers_rle");
+
+	//RLE rle("Y:\\62Oracle\\TPEQUIPE\\B62_TP1\\Doc\\FichiersRLE\\fichiers_rle");
+	RLE rle("C:/Users/Aqua/Desktop/fichiers_rle");
 	Univers univers(rle.getPatron());
-	Vue vue;
+	Vue vue(rle);
 
 	manager.evaluationOption();
 	if (manager.mRegleValide) {
-		univers.setRegle(manager.mRegle);
+		vue.setCustomRegle(manager.mRegle);
 	}
 
+	univers.setRegle(vue.getNomRegle());
 	Controleur controleur(univers, vue);
 	controleur.start();
 	return 0;
