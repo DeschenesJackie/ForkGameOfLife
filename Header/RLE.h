@@ -51,7 +51,7 @@ public:
 private: 
 	std::list<std::string> mFiles; 
 	int mNbPatrons; 
-	std::list<std::string>::iterator mIterateur;
+	std::vector<std::string>::iterator mIterateur;
 	int mNbCell; 
 
 	void charManager(char c, Patron & p);
