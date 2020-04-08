@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 	OptionManager manager(argc, argv);
 
 	//RLE rle("Y:\\62Oracle\\TPEQUIPE\\B62_TP1\\Doc\\FichiersRLE\\fichiers_rle");
-	RLE rle("C:/Users/Aqua/Desktop/fichiers_rle");
+	RLE rle("Y:\\HIVER_2020\\projet_oracle\\B62_TP1\\Doc\\FichiersRLE\\fichiers_rle");
 	Univers univers(rle.getPatron());
 	Vue vue(rle);
 

@@ -44,7 +44,15 @@ void RLE::charManager(char c, Patron & p) {
 		for (int i{}; i < mNbCell; ++i) {
 			p.contenu.push_back(Cellule(etat));
 		}
-
+		for (int i{}; i < mNbCell; ++i) {
+			p.contenu.push_back(Cellule(etat));
+		}
+		mNbCell = 0; 
+	}
+	else if (c == '$') {
+		for (int i{}; i < p.nbColonnes * mNbCell; ++i) {
+			p.contenu.push_back(Cellule(false));
+		}
 		mNbCell = 0; 
 	}
 }
@@ -94,7 +102,6 @@ void RLE::previousPatron()
 
 void RLE::nextPatron()
 {
-	
 	if (mIterateur == mFiles.end()-1)
 		mIterateur = mFiles.begin();
 	else 
