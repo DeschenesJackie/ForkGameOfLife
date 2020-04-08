@@ -25,7 +25,6 @@
 #define _RLE_h_
 
 #include <experimental/filesystem>
-#include <list>
 #include <vector>
 #include <string>
 #include <regex>

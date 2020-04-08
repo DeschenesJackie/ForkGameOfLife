@@ -87,14 +87,17 @@ Patron RLE::getPatron()
 void RLE::previousPatron()
 {
 	if (mIterateur == mFiles.begin())
-		mIterateur = mFiles.end();
-	--mIterateur;
+		mIterateur = mFiles.end()-1;
+	else
+		--mIterateur;
 }
 
 void RLE::nextPatron()
 {
-	++mIterateur;
-	if (mIterateur == mFiles.end())
+	
+	if (mIterateur == mFiles.end()-1)
 		mIterateur = mFiles.begin();
+	else 
+		++mIterateur;
 }
 
