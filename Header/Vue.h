@@ -33,7 +33,7 @@ class Vue
 		void gererEffetBords();
 
 	public:
-		Vue(RLE rle);
+		Vue(RLE &rle);
 		~Vue() = default;
 
 		int getMultiplier();
@@ -41,7 +41,7 @@ class Vue
 		bool getSimStatus();
 		bool getMQuit();
 		bool getEffetsBords();
-		RLE mRLE;
+		RLE &mRLE;
 
 		std::string getNomRegle();
 		bool capterEvenement();
