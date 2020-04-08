@@ -170,6 +170,7 @@ void Vue::capterEvenement() {
 	console_events consoleEvents;
 	consoleEvents.read_events();
 	
+
 	if (consoleEvents.key_events_count() > 0) {
 		switch (consoleEvents.next_key_event().ascii_value()) {
 			case '32':	pause();			break;	// Espace : Pause/Reprise de la simulation
