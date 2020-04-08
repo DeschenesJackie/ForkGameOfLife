@@ -17,7 +17,7 @@ const int BORDURES_MORTES{}, BORDURES_CYCLIQUES{ 1 };
 const std::string REGLE1{ "B3/S23" }, REGLE2{ "B36/S23" }, REGLE3{ "B3678/S34678" };
 
 using Patron = struct {
-	std::vector<Cellule> contenu; 
+	std::vector<Cellule> contenu;
 	int nbColonnes; 
 	int nbRangees; 
 };
