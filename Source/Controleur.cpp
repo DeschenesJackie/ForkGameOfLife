@@ -1,5 +1,4 @@
 #include "../Header/Controleur.h"
-#include <conio.h>
 
 Controleur::Controleur(Univers & univers, Vue & vue)
 	:mUnivers{ univers }, mVue{vue}
@@ -19,8 +18,7 @@ void Controleur::start() {
 			}
 			mVue.affiche(mUnivers.getVecteurActif());
 		}
-		else
-			_getch();
+		
 	}
 }
 

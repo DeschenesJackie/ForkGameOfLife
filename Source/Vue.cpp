@@ -186,7 +186,7 @@ bool Vue::capterEvenement() {
 	csl << key_events::add_filter<key_filter_up>;
 	if (consoleEvents.key_events_count() > 0) {
 		switch (consoleEvents.next_key_event().ascii_value()) {
-			case '32':	pause();			break;	// Espace : Pause/Reprise de la simulation
+			case 32:	pause();			break;	// Espace : Pause/Reprise de la simulation
 
 			case '1':	multiplier = 1;		break;	// vitesse de la simulation
 			case '2': 	multiplier = 2;		break;	// vitesse de la simulation
