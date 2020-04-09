@@ -222,12 +222,12 @@ bool Vue::capterEvenement() {
 
 			case 'z':
 			case 'Z':	mRLE.previousPatron(); recompile = true;  
-						if (!(mRLE.generatePatron())) {mQuit = true};	break;
+						if (!(mRLE.generatePatron())) { mQuit = true;  };	break;
 			case 'x':
 			case 'X':	recompile = true;	break;
 			case 'c':
 			case 'C':	mRLE.nextPatron(); recompile = true;  
-						if (!(mRLE.generatePatron())) {mQuit = true};	break;
+						if (!(mRLE.generatePatron())) { mQuit = true;  };	break;
 
 
 			case 27:	mQuit = true;		break;	// Escape

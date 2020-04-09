@@ -61,10 +61,11 @@ void RLE::charManager(char c, Patron & p) {
 	}
 }
 
-Bool RLE::generatePatron()
+bool RLE::generatePatron()
 {
 	std::ifstream iStream(*mIterateur, std::ios::in);
 	std::regex commentaire("^#.+"); //  # ...
+	std::regex commentaireValide("^#[CcNORr].+"); //  # [CcNORr]...
 	std::regex limitations("x\\s=\\s(\\d+),\\sy\\s=\\s(\\d+).*"); // x = [0-9]+, y = [0-9]+
 	bool limitationDone{ false }; 
 	std::smatch capture; 
@@ -75,7 +76,7 @@ Bool RLE::generatePatron()
 			std::string ligne; 			
 			std::getline(iStream, ligne);
 	
-			if (!std::regex_match(ligne, commentaire)) { 
+			if (!std::regex_match(ligne, commentaire)) { // ignore tout ce qui commence par #
 				if(limitationDone)
 					std::for_each(ligne.begin(), ligne.end(), [&patron, this](char c) { charManager(c, patron); });
 				else {
@@ -87,6 +88,11 @@ Bool RLE::generatePatron()
 							limitationDone = true; 
 						}  
 					}
+				}
+			}
+			else {
+				if (!std::regex_match(ligne, commentaireValide)) { // si le commentaire n'est pas dans le format valide
+					return false; 
 				}
 			}
 		}
