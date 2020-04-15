@@ -1,4 +1,4 @@
-*************************************************************************************************************
+﻿*************************************************************************************************************
 Melanie Boucher
 Jackie Deschênes
 Alexandre Howisson
@@ -30,10 +30,10 @@ Rapport
 			Oui
 	
 	2-	Où se trouve dans votre code l’endroit où vous spécifiez le dossier où se trouve les fichiers RLE? 
-		Main
+			Main
 	
 	3-	Veuillez présenter votre ajout personnel : 
-		1.	Quels étaient les intentions initiales, qu’est-ce que fonctionnent bien et qu’est-ce qui fonctionnent moins bien. 
+		1. Quels étaient les intentions initiales, qu’est-ce que fonctionnent bien et qu’est-ce qui fonctionnent moins bien. 
 			Saisir une règle en invite de commande et la voir s’afficher le pattern
 		2. Selon vous, quelle note (sur 10) méritez-vous pour ces trois critères :
 			Pertinence : 10
