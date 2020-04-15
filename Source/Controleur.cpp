@@ -9,7 +9,7 @@ Controleur::Controleur(Univers & univers, Vue & vue)
 void Controleur::start() {
 	while (!mVue.getMQuit()) { // A changer pour condition d'arret
 		if (mVue.capterEvenement()) {
-			mUnivers.reset(mVue.mRLE.getPatron(), mVue.getNomRegle());
+			mUnivers.reset(mVue.mRLE.getPatron(), mVue.getNomRegle(), mVue.getPercentage());
 		}
 
 		if (mVue.getSimStatus()) {

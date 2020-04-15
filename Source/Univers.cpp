@@ -19,26 +19,36 @@ Univers::Univers(Patron patron, std::string regle)
 	}
 }
 
-void Univers::reset(Patron patron, std::string regle) { 
+void Univers::reset(Patron patron, std::string regle, int pourcent) { 
 	std::vector<Cellule>::iterator iterateurActif = getVecteurActif().begin();
 	
 	setRegle(regle);
-
-	while (iterateurActif != getVecteurActif().end()) {
-		(*iterateurActif).setEtat(false); 
-		++iterateurActif; 
-	}          
-	std::vector<Cellule>::iterator indexPatron = patron.contenu.begin();
-	iterateurActif = getVecteurActif().begin();
-	
-	bool etat;
-	int departL = LARGEUR / 2 - patron.nbColonnes / 2;
-	int departH = HAUTEUR / 2 - patron.nbRangees / 2;
-	for (int i{}; i < patron.nbColonnes; ++i) {
-		for (int j{}; j < patron.nbRangees; ++j) {
-			etat = (*(indexPatron + j + (i*patron.nbColonnes))).etat(); 
-			(*(iterateurActif + j + departL + ((i + departH)* (LARGEUR)))).setEtat(etat);
-		}
+	if (pourcent == 0) {
+		while (iterateurActif != getVecteurActif().end()) {
+			(*iterateurActif).setEtat(false); 
+			++iterateurActif; 
+		}          
+		std::vector<Cellule>::iterator indexPatron = patron.contenu.begin();
+		iterateurActif = getVecteurActif().begin();
+		
+		bool etat;
+		int departL = LARGEUR / 2 - patron.nbColonnes / 2;
+		int departH = HAUTEUR / 2 - patron.nbRangees / 2;
+		for (int i{}; i < patron.nbColonnes; ++i) {
+			for (int j{}; j < patron.nbRangees; ++j) {
+				etat = (*(indexPatron + j + (i*patron.nbColonnes))).etat(); 
+				(*(iterateurActif + j + departL + ((i + departH)* (LARGEUR)))).setEtat(etat);
+			}
+		}	
+	}
+	else {
+		bool temp = false;
+		while (iterateurActif != getVecteurActif().end()) {
+			if (rand()%100 < pourcent) {temp = true; }
+			else {temp = false;}
+			(*iterateurActif).setEtat(temp); 
+			++iterateurActif; 
+		} 
 	}
 }
 
