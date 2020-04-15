@@ -64,12 +64,13 @@ void RLE::charManager(char c, Patron & p) {
 bool RLE::generatePatron()
 {
 	std::ifstream iStream(*mIterateur, std::ios::in);
+	bool limitationDone{ false };
+	Patron patron;
+
 	std::regex commentaire("^#.+"); //  # ...
 	std::regex commentaireValide("^#[CcNORr].+"); //  # [CcNORr]...
 	std::regex limitations("x\\s=\\s(\\d+),\\sy\\s=\\s(\\d+).*"); // x = [0-9]+, y = [0-9]+
-	bool limitationDone{ false }; 
-	std::smatch capture; 
-	Patron patron; 
+	std::smatch capture;
 
 	if (iStream.is_open()) {
 		while (!iStream.eof()) {
@@ -82,10 +83,15 @@ bool RLE::generatePatron()
 				else {
 					if (std::regex_match(ligne, capture, limitations)) {
 						if (capture.size() == 3) {
-							patron.nbRangees = std::stoi(capture[1].str());
-							patron.nbColonnes = std::stoi(capture[2].str());
+							if (std::stoi(capture[1].str()) <= LARGEUR && std::stoi(capture[2].str()) <= HAUTEUR) {
+								patron.nbRangees = std::stoi(capture[1].str());
+								patron.nbColonnes = std::stoi(capture[2].str());
 
-							limitationDone = true; 
+								limitationDone = true;
+							}
+							else {
+								return false; 
+							}
 						}  
 					}
 				}
