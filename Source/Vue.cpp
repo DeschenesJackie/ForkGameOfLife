@@ -181,6 +181,7 @@ bool Vue::capterEvenement() {
 	console_events consoleEvents;
 	consoleEvents.read_events();
 	bool recompile = false;
+	pourcentage = 0;
 
 	
 	csl << key_events::add_filter<key_filter_up>;
@@ -208,17 +209,17 @@ bool Vue::capterEvenement() {
 			case 'O':	basculeModeCouleur();	break;	// Bascule le mode de couleur pour les cellules inactives (noir, même couleur que les cellules actives mais foncées)
 
 			case 'a':
-			case 'A':	pourcentage = 1;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
+			case 'A':	pourcentage = 1; recompile = true;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
 			case 's':
-			case 'S':	pourcentage = 5;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
+			case 'S':	pourcentage = 5; recompile = true;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
 			case 'd':
-			case 'D':	pourcentage = 10;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
+			case 'D':	pourcentage = 10; recompile = true;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
 			case 'f':
-			case 'F':	pourcentage = 15;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
+			case 'F':	pourcentage = 15; recompile = true;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
 			case 'g':
-			case 'G':	pourcentage = 25;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
+			case 'G':	pourcentage = 25; recompile = true;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
 			case 'h':
-			case 'H':	pourcentage = 50;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
+			case 'H':	pourcentage = 50; recompile = true;	break;	// Génération aléatoire selon le pourcentage de chance que Cell soit vivante
 
 			case 'z':
 			case 'Z':	mRLE.previousPatron(); recompile = true;  
