@@ -1,3 +1,16 @@
+// Cégep du Vieux Montréal - B62
+// 
+// Vue 
+//  
+// dans le cadre d'un automate cellulaire dans le Jeu de la vie 
+// 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// 
+// Date de création : 2  mars 2020
+// Auteurs : 
+// - Mélanie Boucher 
+// - Jackie et Alexandre (implémentation de plusieurs fonctions) 
+
 #pragma once
 
 #ifndef _Vue_h_

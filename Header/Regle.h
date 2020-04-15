@@ -1,3 +1,16 @@
+// Cégep du Vieux Montréal - B62
+// 
+// Regle 
+//  
+// dans le cadre d'un automate cellulaire dans le Jeu de la vie 
+// 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// 
+// Date de création : 2  mars 2020
+// Auteurs : 
+// - Alexandre Howison
+// - Jackie Deschenes 
+
 #pragma once
 #include <vector>
 #include <stdlib.h>

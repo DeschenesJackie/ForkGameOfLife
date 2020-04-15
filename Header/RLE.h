@@ -9,16 +9,10 @@
 // Date de création : 2  mars 2020
 // Auteurs : 
 // - Jessica Khau
+// - Jackie Deschenes
 //
 // Références : 
 // -https://thispointer.com/c-how-to-get-element-by-index-in-list/
-//  
-
-// RLE rle("Y:\\HIVER_2020\\projet_oracle\\B62_TP1\\Doc\\FichiersRLE\\fichiers_rle");
-// "..\\Doc\\FichiersRLE\\fichiers_rle"
-// rle.getPatron(); 
-// to put in main 
-
 
 #pragma once
 #ifndef _RLE_h_

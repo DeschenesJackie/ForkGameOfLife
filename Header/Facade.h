@@ -1,3 +1,16 @@
+// Cégep du Vieux Montréal - B62
+// 
+// Facade 
+//  
+// dans le cadre d'un automate cellulaire dans le Jeu de la vie 
+// 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// 
+// Date de création : 2  mars 2020
+// Auteurs : 
+// - Alexandre Howison
+// - Jackie Deschenes 
+
 #pragma once
 #ifndef _Facade_h_
 #define _Facade_h_

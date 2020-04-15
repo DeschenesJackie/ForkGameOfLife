@@ -1,3 +1,15 @@
+// Cégep du Vieux Montréal - B62
+// 
+// Constantes 
+//  
+// dans le cadre d'un automate cellulaire dans le Jeu de la vie 
+// 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// 
+// Date de création : 2  mars 2020
+// Auteurs : 
+// - Collectif
+
 #pragma once
 #ifndef _Constantes_h_
 #define _Constantes_h_

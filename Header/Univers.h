@@ -1,3 +1,15 @@
+// Cégep du Vieux Montréal - B62
+// 
+// Univers 
+//  
+// dans le cadre d'un automate cellulaire dans le Jeu de la vie 
+// 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// 
+// Date de création : 2  mars 2020
+// Auteurs : 
+// - Jackie Deschenes
+
 #pragma once
 #ifndef _Univers_h_
 #define _Univers_h_
